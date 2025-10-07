@@ -1,0 +1,13 @@
+[package]
+name = "rpdk"
+description = "Rune Plugin Development Kit"
+publish = true
+version.workspace = true
+edition.workspace = true
+repository.workspace = true
+
+[dependencies]
+bevy_remote = { git = "https://github.com/bevyengine/bevy.git", branch = "main", package = "bevy_remote", default-features = false }
+rune_remote_brp = { path = "../rune_remote_brp" }
+serde_json.workspace = true
+ureq = { version = "3.1.2", default-features = false, features = ["json"] }
