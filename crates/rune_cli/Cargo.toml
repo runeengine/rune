@@ -1,0 +1,35 @@
+[package]
+name = "rune_cli"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "rune"
+path = "src/main.rs"
+
+# See https://bevy.org/learn/quick-start/getting-started/setup/#compile-with-performance-optimizations
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+
+# When releasing for web, you can pass --profile wasm-release to cargo instead of --release.
+[profile.wasm-release]
+inherits = "release"
+opt-level = "s"
+strip = "debuginfo"
+
+[dependencies]
+clap = { version = "4.5.48", features = ["derive"] }
+rune = { path = "../rune", default-features = false }
+
+[features]
+default = ["rune/dev_native"]
+release = ["rune/release"]

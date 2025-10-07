@@ -1,0 +1,10 @@
+[package]
+name = "bevy_workflows"
+version.workspace = true
+edition.workspace = true
+publish = true
+repository.workspace = true
+
+[dependencies]
+bevy = { git = "https://github.com/bevyengine/bevy.git", branch = "main", default-features = false }
+workflows-runner = { git = "https://github.com/ninjacat0818/wf", branch = "main", package = "workflows-runner" }
