@@ -11,3 +11,20 @@ repository = "https://github.com/runeengine/rune"
 [workspace.dependencies]
 serde = { version = "1.0.228", default-features = false, features = ["derive"] }
 serde_json = { version = "1.0.145" }
+
+# See https://bevy.org/learn/quick-start/getting-started/setup/#compile-with-performance-optimizations
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+
+# When releasing for web, you can pass --profile wasm-release to cargo instead of --release.
+[profile.wasm-release]
+inherits = "release"
+opt-level = "s"
+strip = "debuginfo"
