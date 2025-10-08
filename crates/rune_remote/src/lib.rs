@@ -31,9 +31,10 @@ pub fn spawn_sprite_handler(
     world: &mut World,
 ) -> BrpResult {
     let asset_load_params = serde_json::from_value::<AssetLoadParams>(params.unwrap()).unwrap();
-    let asset_server = world.resource_mut::<AssetServer>();
-    let handle = asset_server.load::<bevy::image::Image>(asset_load_params.path);
+    let handle = world.load_asset::<bevy::image::Image>(asset_load_params.path);
+
     let sprite = Sprite::from_image(handle);
     let entity = world.spawn(sprite).id();
+
     Ok(serde_json::json!({ "entity": entity }))
 }

@@ -1,5 +1,6 @@
 [package]
 name = "rune"
+description = "Workflow based dynamic game engine"
 version.workspace = true
 edition.workspace = true
 publish.workspace = true
@@ -29,9 +30,7 @@ dev = [
     # "bevy/bevy_ui_debug",
     # "bevy/track_location",
 ]
-release = [
-    "bevy_base",
-]
+release = ["bevy_base"]
 bevy_base = [
     "bevy/trace",
     "bevy/debug",
@@ -55,11 +54,18 @@ bevy_base = [
     # "bevy/bevy_ui_render",
 
     "bevy/bevy_asset",
-
-    "bevy/bevy_image",
-    "bevy/png",
     # "bevy/bevy_text",
+    "bevy/bevy_image",
+    "image_format_support",
 
     "bevy/bevy_sprite",
     "bevy/bevy_sprite_render",
+]
+
+image_format_support = [
+    "bevy/bmp",
+    "bevy/gif",
+    "bevy/jpeg",
+    "bevy/png",
+    "bevy/webp",
 ]
